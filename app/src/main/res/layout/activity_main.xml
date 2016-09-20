@@ -36,7 +36,9 @@
             android:layout_height="wrap_content"
             android:text="@string/signup"
             android:id="@+id/button2"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:clickable="false"
+            android:onClick="clickSignUpMain" />
     </LinearLayout>
 
 </RelativeLayout>
