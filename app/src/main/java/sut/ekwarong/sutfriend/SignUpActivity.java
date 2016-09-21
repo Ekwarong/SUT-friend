@@ -2,6 +2,8 @@ package sut.ekwarong.sutfriend;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -59,6 +61,15 @@ public class SignUpActivity extends AppCompatActivity {
             Uri uri = data.getData();                   // Get data to uri
             imagePathString = myFindPath(uri);          // Call Method myFindPath then return to imagePathString
             Log.d("SutFriendV1", "imagePathString ==> " + imagePathString);
+
+            // Setup imageView
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                imageView.setImageBitmap(bitmap);                       // Set image to imageView
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }   // OnActivityResult
 
