@@ -14,28 +14,26 @@ public class MyAlert {
     private int anInt;
     private String titleString, messageString;
 
+    // Declare Construct variable MyAlert
     public MyAlert(Context context, int anInt, String titleString, String messageString) {
-        this.context = context;
-        this.anInt = anInt;
-        this.titleString = titleString;
-        this.messageString = messageString;
-    }
+        this.context = context;                                             // Create context
+        this.anInt = anInt;                                                 // Create icon
+        this.titleString = titleString;                                     // Create title
+        this.messageString = messageString;                                 // Create message
+    }   // Declare 3 Parameters in Dialog - Icon, Title, Message
 
     public void myDialog() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setCancelable(false);
-        builder.setIcon(anInt);
-        builder.setTitle(titleString);
-        builder.setMessage(messageString);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);     // Set builder to AlertDialog.Builder
+        builder.setCancelable(false);                                       // Block undo button
+        builder.setIcon(anInt);                                             // Set icon to dialog
+        builder.setTitle(titleString);                                      // Set title to dialog
+        builder.setMessage(messageString);                                  // Set message to dialog
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-            }
-        });
-        builder.show();
-
+            }   // Click to close dialog
+        }); // Set Positive Button
+        builder.show();                                                     // Show dialog
     }
-
 }   // Main Class

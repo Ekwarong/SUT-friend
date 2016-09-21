@@ -192,8 +192,7 @@
                 android:id="@+id/editText7"
                 android:layout_weight="1"
                 android:textColor="@color/aText"
-                android:inputType="none"
-                android:textIsSelectable="true" />
+                android:inputType="none" />
 
         </LinearLayout>
 
