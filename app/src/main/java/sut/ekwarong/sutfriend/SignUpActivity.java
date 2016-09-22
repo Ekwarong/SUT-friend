@@ -22,6 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
             genderString, imageString, imagePathString, imageNameString;
     private RadioButton maleRadioButton, femaleRadioButton;
     private ImageView imageView;
+    private boolean statusABoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,10 @@ public class SignUpActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+
+            statusABoolean = false;
+
+        }   // if
     }   // OnActivityResult
 
     private String myFindPath(Uri uri) {
@@ -102,16 +106,22 @@ public class SignUpActivity extends AppCompatActivity {
         userString = userEditText.getText().toString().trim();
         passwordString = passwordEditText.getText().toString().trim();
 
-        // Check Space
+        // Check for Alter
         if (nameString.equals("") || addressString.equals("") ||
                 phoneString.equals("") || userString.equals("") || passwordString.equals("")) {
-            // Have Space
+            // Check Space
             MyAlert myAlert = new MyAlert(this, R.drawable.bird48, "Invalid Value", "Fill All Box");
             myAlert.myDialog();
         } else if (!(maleRadioButton.isChecked() || femaleRadioButton.isChecked())) {
             // None Check Gender
             MyAlert myAlert = new MyAlert(this, R.drawable.rat48, "No gender", "Please Check One");
             myAlert.myDialog();
+        } else if (statusABoolean) {
+            //None Chose Image
+            MyAlert myAlert = new MyAlert(this, R.drawable.nobita48, "No Image", "Please Choose Image");
+            myAlert.myDialog();
+        } else {
         }
+
     }   // clickSign
 }   // Main Class
