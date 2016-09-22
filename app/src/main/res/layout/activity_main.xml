@@ -10,15 +10,42 @@
     tools:context="sut.ekwarong.sutfriend.MainActivity"
     android:background="@drawable/bg7">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/application_testing"
-        android:id="@+id/textView"
-        android:layout_gravity="top|center_horizontal"
-        android:textColor="@color/aText"
-        android:textSize="@dimen/h1"
-        android:gravity="center" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="@dimen/logohight"
+            android:layout_height="@dimen/logohight"
+            android:id="@+id/imageView2"
+            android:src="@drawable/sut_logo" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_marginTop="20dp"
+            android:hint="username"
+            android:inputType="text"
+            android:textColor="@color/aText"
+            android:textColorHint="@color/aText"
+            android:textSize="@dimen/h2" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:textColor="@color/aText"
+            android:inputType="textPassword"
+            android:textColorHint="@color/aText"
+            android:hint="********"
+            android:textSize="@dimen/h2" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -34,7 +61,8 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             android:id="@+id/button"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textSize="@dimen/h2" />
 
         <Button
             android:layout_width="match_parent"
@@ -43,7 +71,8 @@
             android:id="@+id/button2"
             android:layout_weight="1"
             android:clickable="false"
-            android:onClick="clickSignUpMain" />
+            android:onClick="clickSignUpMain"
+            android:textSize="@dimen/h2" />
     </LinearLayout>
 
 </RelativeLayout>
