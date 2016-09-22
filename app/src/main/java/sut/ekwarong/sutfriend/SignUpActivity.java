@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -196,7 +197,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         // Exlicit
         private Context context;
-        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_user_GGTY.php";
+        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_use.php";
 
         public SaveUserToServer(Context context) {
             this.context = context;
@@ -224,10 +225,9 @@ public class SignUpActivity extends AppCompatActivity {
                 return response.body().string();
 
             } catch (Exception e) {
-                Log.d("SutFriendV2", "e = " + e.toString());
+                Log.d("SutFriendV2", "e ==> " + e.toString());
                 return null;
             }
-
         }   // doInBackground
 
         @Override
@@ -236,6 +236,13 @@ public class SignUpActivity extends AppCompatActivity {
 
             Log.d("SutFriendV2", "Result ==> " + s);
 
+            // Save Data Process Alert
+            if (Boolean.parseBoolean(s)) {
+                Toast.makeText(context, "Save Data Done", Toast.LENGTH_SHORT).show();
+            } else {
+                MyAlert myAlert = new MyAlert(context, R.drawable.rat48,
+                        "Error", "Save Data Failed");
+            }
         }   // onPostExecute
     }   // SaveUserToServer
 

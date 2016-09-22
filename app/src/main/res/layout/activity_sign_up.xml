@@ -47,7 +47,7 @@
                 android:id="@+id/editText3"
                 android:layout_weight="1"
                 android:textColor="@color/aText"
-                android:inputType="none" />
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -121,7 +121,7 @@
                 android:id="@+id/editText4"
                 android:layout_weight="1"
                 android:textColor="@color/aText"
-                android:inputType="none" />
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -145,7 +145,7 @@
                 android:id="@+id/editText5"
                 android:layout_weight="1"
                 android:textColor="@color/aText"
-                android:inputType="none" />
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -168,7 +168,7 @@
                 android:id="@+id/editText6"
                 android:layout_weight="1"
                 android:textColor="@color/aText"
-                android:inputType="none" />
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -192,7 +192,7 @@
                 android:id="@+id/editText7"
                 android:layout_weight="1"
                 android:textColor="@color/aText"
-                android:inputType="none" />
+                android:inputType="text" />
 
         </LinearLayout>
 
