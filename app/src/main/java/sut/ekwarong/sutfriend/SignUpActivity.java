@@ -191,13 +191,13 @@ public class SignUpActivity extends AppCompatActivity {
         SaveUserToServer saveUserToServer = new SaveUserToServer(this);
         saveUserToServer.execute();
 
-    }   //upLoadStringToServer
+    }   // upLoadStringToServer
 
     private class SaveUserToServer extends AsyncTask<Void, Void, String> {
 
-        // Exlicit
+        // Explicit
         private Context context;
-        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_use.php";
+        private static final String urlPHP = "http://swiftcodingthai.com/Sut/add_user.php";
 
         public SaveUserToServer(Context context) {
             this.context = context;
@@ -207,27 +207,28 @@ public class SignUpActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
 
             try {
+
                 OkHttpClient okHttpClient = new OkHttpClient();
                 RequestBody requestBody = new FormEncodingBuilder()
-                        .add("isAdd", "True")
+                        .add("isAdd", "true")
                         .add("Name", nameString)
-                        .add("Image", "http://swiftcodingthai.com/Sut/Image" + imagePathString)
+                        .add("Image", "http://swiftcodingthai.com/Sut/Image" + imageNameString)
                         .add("Gender", genderString)
                         .add("Address", addressString)
                         .add("Phone", phoneString)
                         .add("User", userString)
-                        .add("Password", phoneString)
+                        .add("Password", passwordString)
                         .build();
                 Request.Builder builder = new Request.Builder();
                 Request request = builder.url(urlPHP).post(requestBody).build();
                 Response response = okHttpClient.newCall(request).execute();
-
                 return response.body().string();
 
             } catch (Exception e) {
-                Log.d("SutFriendV2", "e ==> " + e.toString());
+                Log.d("SutFriendV2", "e==> " + e.toString());
                 return null;
             }
+
         }   // doInBackground
 
         @Override
@@ -239,6 +240,7 @@ public class SignUpActivity extends AppCompatActivity {
             // Save Data Process Alert
             if (Boolean.parseBoolean(s)) {
                 Toast.makeText(context, "Save Data Done", Toast.LENGTH_SHORT).show();
+                finish();
             } else {
                 MyAlert myAlert = new MyAlert(context, R.drawable.rat48,
                         "Error", "Save Data Failed");
@@ -267,6 +269,7 @@ public class SignUpActivity extends AppCompatActivity {
             Log.d("SutFriendV1", "Upload Finish");
 
         } catch (Exception e) {
+            e.printStackTrace();
             Log.d("SutFriendV1", "e = " + e.toString());
         }
     }   // upLoadImageToServer
