@@ -1,5 +1,7 @@
 package sut.ekwarong.sutfriend;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class SignUpActivity extends AppCompatActivity {
     private RadioButton maleRadioButton, femaleRadioButton;
     private ImageView imageView;
     private boolean statusABoolean = true;
+    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         maleRadioButton = (RadioButton) findViewById(R.id.radioButton);
         femaleRadioButton = (RadioButton) findViewById(R.id.radioButton2);
         imageView = (ImageView) findViewById(R.id.imageView);
+        radioGroup = (RadioGroup) findViewById(R.id.ragGender);
 
         // ImageView Controller
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +53,24 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Choose Image"), 1);
             }   // On Click
         });
+
+        // Radio Controller
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                switch (checkedId) {
+                    case R.id.radioButton:
+                        genderString = "Male";
+                        break;
+                    case R.id.radioButton2:
+                        genderString = "Female";
+                        break;
+                }
+
+            }   // On Check
+        });
+
     }   // Main Method
 
     @Override
@@ -71,29 +94,22 @@ public class SignUpActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             statusABoolean = false;
-
         }   // if
     }   // OnActivityResult
 
     private String myFindPath(Uri uri) {
-
         String strResult = null;
         String[] strings = {MediaStore.Images.Media.DATA};                              // Declare String Array
         Cursor cursor = getContentResolver().query(uri, strings, null, null, null);
 
         if (cursor != null) {
-
             cursor.moveToFirst();
             int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             strResult = cursor.getString(index);
-
-
         } else {
             strResult = uri.getPath();
         }
-
         return strResult;
     }
 
@@ -121,7 +137,27 @@ public class SignUpActivity extends AppCompatActivity {
             MyAlert myAlert = new MyAlert(this, R.drawable.nobita48, "No Image", "Please Choose Image");
             myAlert.myDialog();
         } else {
+            confirmData();
         }
-
     }   // clickSign
+
+    private void confirmData() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.kon48);
+        builder.setTitle("Check Your Information");
+        builder.setMessage("Name = " + nameString +
+                "\nAddress = " + addressString +
+                "\nPhone = " + phoneString +
+                "\nGender = " + genderString);
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }   // ConfirmData
+
 }   // Main Class
