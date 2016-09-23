@@ -12,5 +12,6 @@
     <string name="user">User :</string>
     <string name="phone">Phone :</string>
     <string name="application_testing">Application Testing</string>
+    <string name="back">Back</string>
 
 </resources>
