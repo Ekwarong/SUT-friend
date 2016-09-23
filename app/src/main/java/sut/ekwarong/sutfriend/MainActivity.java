@@ -3,6 +3,7 @@ package sut.ekwarong.sutfriend;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SyncContext;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.editText2);
 
     }   // Main Method
+
+    public void clickWebSite(View view) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://youtu.be/vUXaB325VOc"));
+        startActivity(intent);
+
+    }   // clickWebSite
 
     private class SynchronizeData extends AsyncTask<Void, Void, String> {
 
@@ -149,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         }   // onPostExecute
     }   // SynchronizeData Class
 
-
     public void clickSignIn(View view) {
 
         // Get Value From EditText
@@ -176,6 +184,5 @@ public class MainActivity extends AppCompatActivity {
     public void clickSignUpMain(View view) {
         startActivity(new Intent(MainActivity.this, SignUpActivity.class));
     }
-
 
 }   // Main Class

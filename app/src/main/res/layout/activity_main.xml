@@ -45,6 +45,16 @@
             android:textColorHint="@color/aText"
             android:hint="********"
             android:textSize="@dimen/h2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/develop_by_ggty"
+            android:id="@+id/textView15"
+            android:layout_marginTop="20dp"
+            android:textColor="#fc8e53"
+            android:clickable="true"
+            android:onClick="clickWebSite" />
     </LinearLayout>
 
     <LinearLayout
