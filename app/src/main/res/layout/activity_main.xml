@@ -62,7 +62,8 @@
             android:text="@string/sign_in"
             android:id="@+id/button"
             android:layout_weight="1"
-            android:textSize="@dimen/h2" />
+            android:textSize="@dimen/h2"
+            android:onClick="clickSignIn" />
 
         <Button
             android:layout_width="match_parent"

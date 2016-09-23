@@ -34,7 +34,8 @@ import java.io.File;
 public class SignUpActivity extends AppCompatActivity {
 
     // Explicit
-    private EditText nameEditText, addressEditText, phoneEditText, userEditText, passwordEditText;
+    private EditText nameEditText, addressEditText, phoneEditText,
+            userEditText, passwordEditText;
     private String nameString, addressString, phoneString, userString, passwordString,
             genderString, imageString, imagePathString, imageNameString;
     private RadioButton maleRadioButton, femaleRadioButton;
@@ -63,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");                                  // Open Gallery all image
+                intent.setType("image/*");                      // Open Gallery all image
                 startActivityForResult(Intent.createChooser(intent, "Choose Image"), 1);
             }   // On Click
         });
@@ -86,7 +87,9 @@ public class SignUpActivity extends AppCompatActivity {
     }   // Main Method
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {     // Do after ActivityResult
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // Do after ActivityResult
         super.onActivityResult(requestCode, resultCode, data);
 
         // Debugging
@@ -95,7 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             // Find Path of Image
             Uri uri = data.getData();                   // Get data to uri
-            imagePathString = myFindPath(uri);          // Call Method myFindPath then return to imagePathString
+            imagePathString = myFindPath(uri);          // Call Method myFindPath and return imagePathString
             Log.d("SutFriendV1", "imagePathString ==> " + imagePathString);
 
             // Setup imageView
@@ -116,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private String myFindPath(Uri uri) {
         String strResult = null;
-        String[] strings = {MediaStore.Images.Media.DATA};                              // Declare String Array
+        String[] strings = {MediaStore.Images.Media.DATA};              // Declare String Array
         Cursor cursor = getContentResolver().query(uri, strings, null, null, null);
 
         if (cursor != null) {
@@ -141,18 +144,25 @@ public class SignUpActivity extends AppCompatActivity {
         // Check for Alter
         if (nameString.equals("") || addressString.equals("") ||
                 phoneString.equals("") || userString.equals("") || passwordString.equals("")) {
+
             // Check Space
-            MyAlert myAlert = new MyAlert(this, R.drawable.bird48, "Invalid Value", "Fill All Box");
+            MyAlert myAlert = new MyAlert(this, R.drawable.bird48,
+                    "Invalid Value", "Fill All Box");
             myAlert.myDialog();
         } else if (!(maleRadioButton.isChecked() || femaleRadioButton.isChecked())) {
+
             // None Check Gender
-            MyAlert myAlert = new MyAlert(this, R.drawable.rat48, "No gender", "Please Check One");
+            MyAlert myAlert = new MyAlert(this, R.drawable.rat48,
+                    "No gender", "Please Check One");
             myAlert.myDialog();
         } else if (statusABoolean) {
+
             //None Chose Image
-            MyAlert myAlert = new MyAlert(this, R.drawable.nobita48, "No Image", "Please Choose Image");
+            MyAlert myAlert = new MyAlert(this, R.drawable.nobita48,
+                    "No Image", "Please Choose Image");
             myAlert.myDialog();
         } else {
+
             confirmData();
         }
     }   // clickSign
