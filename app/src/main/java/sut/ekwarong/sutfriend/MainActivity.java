@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Check Space
             MyAlert myAlert = new MyAlert(this, R.drawable.rat48,
-                    "Ivalid Value", "Fill All Box");
+                    "Invalid Value", "Fill All Box");
             myAlert.myDialog();
         } else {
 
